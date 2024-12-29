@@ -43,11 +43,8 @@ def update_leaderboard():
     if request.method == 'POST':
         entry_id = request.form.get('id')
         name = request.form['name']
-        rank = request.form.get('rank') 
+        rank = request.form['rank']  
         qualities = request.form['qualities']
-
-        if not rank:
-            rank = 1
 
         if entry_id: 
             entry = Leaderboard.query.get(entry_id)
@@ -60,19 +57,11 @@ def update_leaderboard():
             db.session.add(new_entry)
             db.session.commit()
 
-        # return redirect(url_for('leaderboard'))
+        return redirect(url_for('leaderboard'))
 
     leaderboard_entries = Leaderboard.query.all()
     return render_template('update_leaderboard.html', leaderboard=leaderboard_entries)
 
-@app.route('/delete_submission/<int:id>', methods=['GET'])
-def delete_submission(id):
-    submission = Submission.query.get(id)
-    
-    if submission:
-        db.session.delete(submission)
-        db.session.commit()
-    return redirect(url_for('submissions'))
 
 
 @app.route('/delete_leaderboard/<int:id>', methods=['GET'])
@@ -80,7 +69,7 @@ def delete_leaderboard(id):
     entry = Leaderboard.query.get(id)
     db.session.delete(entry)
     db.session.commit()
-    # return redirect(url_for('leaderboard'))
+    return redirect(url_for('leaderboard'))
 
 
 @app.route('/leaderboard')
@@ -92,6 +81,19 @@ def leaderboard():
 def submissions():
     submissions = Submission.query.all()  
     return render_template('submissions.html', submissions=submissions)
+
+@app.route('/delete_submission/<int:id>', methods=['GET'])
+def delete_submission(id):
+    # Find the submission by ID
+    submission = Submission.query.get(id)
+    
+    if submission:
+        # Delete the submission from the database
+        db.session.delete(submission)
+        db.session.commit()
+    
+    # Redirect to the submissions page
+    return redirect(url_for('submissions'))
 
 if __name__ == '__main__':
     with app.app_context():

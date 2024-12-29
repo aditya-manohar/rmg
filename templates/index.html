@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMR Boys</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                Gorrela Mandha Randi (GMR) Boys
+            </div>
+            <div>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/leaderboard">Leaderboard</a></li>
+                    <li><a href="whatsapp://send?text=Your message here">Share to Your Friend</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Submit Your Friend</h1>
+        <form action="/submit" method="POST">
+            <div class="form-group">
+                <label for="name">Friend's Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="traits">Enter Traits (comma-separated):</label>
+                <input type="text" id="traits" name="traits" placeholder="e.g., Handsome, Topper, Funny, CGPA : 9.8"
+                    required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+
+    <center>
+        <div class="content">
+            Just enter your friend's name and some traits that
+            describes them. Once you submit it, the leaderboard will update in a few minutes.<br>
+            The
+            more you submit, the higher your friend climbs!
+            <br>
+            So, go ahead and enter your friend's name and their funniest traits to see where they stand on the
+            leaderboard of GMR Boys!
+        </div>
+    </center>
+
+    <footer>
+        Made by GMR Boys. Made for GMR Boys.
+    </footer>
+</body>
+
+</html>

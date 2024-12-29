@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="/static/leaderboard.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Submit Your Friend</a></li>
+                <li><a href="whatsapp://send?text=Your message here">Share to Your Friend</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class=" container">
+        <center>
+            <h1>Leaderboard</h1>
+        </center>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Qualities</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in leaderboard %}
+                <tr>
+                    <td>{{ entry.rank }}</td>
+                    <td>{{ entry.name }}</td>
+                    <td>{{ entry.qualities }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

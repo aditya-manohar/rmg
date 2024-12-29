@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/leaderboard">Leaderboard</a>
+            <a href="/update_leaderboard">Update Leaderboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Submissions</h1>
+        <ul class="leaderboard-list">
+            {% for submission in submissions %}
+            <li>
+                <strong>{{ submission.name }}</strong> - Traits: {{ submission.traits }}
+            </li>
+            <a href="{{ url_for('delete_submission', id=submission.id) }}">Delete</a>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+
+</html>

@@ -1,7 +1,6 @@
 Flask
 Flask-SQLAlchemy
 Flask-Migrate
-<<<<<<< HEAD
 psycopg2
 gunicorn
 python-dotenv

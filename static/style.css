@@ -34,6 +34,9 @@ header nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
 }
 
 nav {
@@ -122,17 +125,52 @@ button:hover {
 }
 
 .content {
-    margin: 5rem;
-    font-size: large;
-    font-family: cursive;
-    font-weight: bold;
+    margin: 3rem;
+    font-size: medium;
+    font-size: 17px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 500;
 }
 
 footer {
     background-color: #333;
     padding: 1.5rem;
-    position: sticky;
+    position: fixed;
     bottom: 0;
     color: white;
     text-align: center;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 24px;
+    }
+
+    header nav ul li {
+        margin: 1px 0;
+    }
+
+    header nav ul li a {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+    }
+
+    header nav ul li a i {
+        margin-right: 8px;
+        font-size: 18px;
+    }
+
+    header nav ul li a span {
+        display: none;
+    }
+
+    .logo {
+        font-size: 20px;
+        text-align: left;
+    }
 }

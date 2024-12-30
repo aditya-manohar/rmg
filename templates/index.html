@@ -6,19 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GMR Boys</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 </head>
 
 <body>
     <header>
         <nav>
             <div class="logo">
-                Gorrela Mandha Randi (GMR) Boys
+                <!-- <span style="color:blue">G</span>orrela <span style="color:rgb(255, 213, 0)">M</span>andha <span
+                    style="color:blue">R</span>andi (GMR) -->
+                GMR Boys
             </div>
             <div>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/leaderboard">Leaderboard</a></li>
-                    <li><a href="whatsapp://send?text=Your message here">Share to Your Friend</a></li>
+                    <li><a href="/"><i class="fas fa-home"></i><span>Home</span></a></li>
+                    <li><a href="/leaderboard"><i class="fas fa-trophy"></i><span>Leaderboard</span></a></li>
+                    <li><a href="whatsapp://send?text=https://gmrboys.onrender.com"><i
+                                class="fas fa-share-alt"></i><span>Share to Your Friend</span></a></li>
                 </ul>
             </div>
         </nav>
@@ -28,7 +33,7 @@
         <h1>Submit Your Friend</h1>
         <form action="/submit" method="POST">
             <div class="form-group">
-                <label for="name">Friend's Name:</label>
+                <label for="name">Your Friend's Name:</label>
                 <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
@@ -42,18 +47,19 @@
 
     <center>
         <div class="content">
-            Just enter your friend's name and about them. Once you submit it, the leaderboard will update in a few
-            minutes.<br>
+            Just enter your friend's name and about them. Once you submit, the leaderboard will update in a few
+            minutes to show the top boys in GMR.<br>
             The
             more you submit, the higher your friend climbs!
-            <br>
+            <br><br>
             So, go ahead and enter your friend's name and about them to see where they stand on the
-            leaderboard of GMR Boys!
+            leaderboard among GMR Boys!<br><br>
+            <b><i>Note:</i> Birthday Boys will be Ranked First in the Leaderboard. [Enter Birthday in the About]</b>
         </div>
     </center>
 
     <footer>
-        Made by GMR Boys. Made for GMR Boys.
+        Made by GMR Boys 🔥 Made for GMR Boys 🔥
     </footer>
 </body>
 

@@ -5,5 +5,4 @@ Flask-Migrate
 psycopg2
 gunicorn
 python-dotenv
-=======
->>>>>>> c031752aa96d0aab12625f5b1213493091c5e33a
+

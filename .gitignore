@@ -1,1 +1,10 @@
-/venv/
+.env
+__pycache__/
+instance/
+*.sqlite3
+*.db
+*.pyc
+*.pyo
+venv/
+.migrations/
+.DS_Store

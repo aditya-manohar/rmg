@@ -1,12 +1,20 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db' 
+if 'DATABASE_URL' in os.environ:
+    # Use the Heroku-provided Postgres URL
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+else:
+    # Use local SQLite database in 'instance' folder for development
+    db_path = os.path.join(os.getcwd(), 'instance', 'data.db')
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+
 
 class Submission(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -98,4 +106,5 @@ def delete_submission(id):
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()  
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)

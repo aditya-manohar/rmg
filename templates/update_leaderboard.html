@@ -27,35 +27,35 @@
             <label for="rank">Rank:</label><br>
             <input type="number" name="rank" required><br><br>
 
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
 
-            <label for="qualities">Qualities (comma separated):</label>
-            <input type="text" id="qualities" name="qualities" required>
+            <label for="qualities">Qualities (comma separated):</label><br>
+            <input type="text" id="qualities" name="qualities" required><br><br>
 
             <button type="submit">Add Entry</button>
         </form>
 
         <h2>Edit Existing Entries</h2>
+        {% for entry in leaderboard %}
         <form action="/update_leaderboard" method="POST">
-            {% for entry in leaderboard %}
-            <div class="entry">
-                <div>
-                    <label for="rank">Rank:</label>
-                    <input type="number" id="rank" name="rank" value="{{ entry.rank }}" min="1" required>
-                </div>
-                <input type="hidden" name="id" value="{{ entry.id }}">
-                <label for="name{{ entry.id }}">Name:</label>
-                <input type="text" id="name{{ entry.id }}" name="name" value="{{ entry.name }}" required>
+            <input type="hidden" name="id" value="{{ entry.id }}">
 
-                <label for="qualities{{ entry.id }}">Qualities (comma separated):</label>
-                <input type="text" id="qualities{{ entry.id }}" name="qualities" value="{{ entry.qualities }}" required>
+            <label for="rank{{ entry.id }}">Rank:</label>
+            <input type="number" id="rank{{ entry.id }}" name="rank" value="{{ entry.rank }}" required><br><br>
 
-                <button type="submit">Update</button>
-                <a href="/delete_leaderboard/{{ entry.id }}" class="delete-btn">Delete</a>
-            </div>
-            {% endfor %}
+            <label for="name{{ entry.id }}">Name:</label>
+            <input type="text" id="name{{ entry.id }}" name="name" value="{{ entry.name }}" required><br><br>
+
+            <label for="qualities{{ entry.id }}">Qualities (comma separated):</label>
+            <input type="text" id="qualities{{ entry.id }}" name="qualities" value="{{ entry.qualities }}"
+                required><br><br>
+
+            <button type="submit">Update</button>
+            <a href="/delete_leaderboard/{{ entry.id }}" class="delete-btn">Delete</a>
         </form>
+        <hr>
+        {% endfor %}
     </div>
 </body>
 

@@ -5,10 +5,8 @@ import os
 
 app = Flask(__name__)
 if 'DATABASE_URL' in os.environ:
-    # Use the Heroku-provided Postgres URL
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 else:
-    # Use local SQLite database in 'instance' folder for development
     db_path = os.path.join(os.getcwd(), 'instance', 'data.db')
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
@@ -60,7 +58,7 @@ def update_leaderboard():
             entry.rank = rank  
             entry.qualities = qualities
             db.session.commit()
-        else:  # Add new entry
+        else:  
             new_entry = Leaderboard(name=name, rank=rank, qualities=qualities)
             db.session.add(new_entry)
             db.session.commit()
@@ -69,7 +67,6 @@ def update_leaderboard():
 
     leaderboard_entries = Leaderboard.query.all()
     return render_template('update_leaderboard.html', leaderboard=leaderboard_entries)
-
 
 
 @app.route('/delete_leaderboard/<int:id>', methods=['GET'])
@@ -96,11 +93,9 @@ def delete_submission(id):
     submission = Submission.query.get(id)
     
     if submission:
-        # Delete the submission from the database
         db.session.delete(submission)
         db.session.commit()
     
-    # Redirect to the submissions page
     return redirect(url_for('submissions'))
 
 if __name__ == '__main__':

@@ -63,7 +63,7 @@ def update_leaderboard():
             db.session.add(new_entry)
             db.session.commit()
 
-        return redirect(url_for('leaderboard'))
+        # return redirect(url_for('leaderboard'))
 
     leaderboard_entries = Leaderboard.query.all()
     return render_template('update_leaderboard.html', leaderboard=leaderboard_entries)
@@ -74,7 +74,7 @@ def delete_leaderboard(id):
     entry = Leaderboard.query.get(id)
     db.session.delete(entry)
     db.session.commit()
-    return redirect(url_for('leaderboard'))
+    return redirect(url_for('update_leaderboard'))
 
 
 @app.route('/leaderboard')

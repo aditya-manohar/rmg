@@ -2,7 +2,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
 }
 
 ::-webkit-scrollbar {
@@ -59,7 +58,8 @@ main {
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
 }
 
 h1 {
@@ -70,7 +70,7 @@ h1 {
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
 }
 
 .form-group {
@@ -96,6 +96,7 @@ button {
     border: none;
     cursor: pointer;
     font-size: 16px;
+    width: 50%;
     margin-top: 10px;
 }
 
@@ -125,11 +126,11 @@ button:hover {
 }
 
 .content {
-    margin: 3rem;
     font-size: medium;
     font-size: 17px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 500;
+    color: #1a1a1a;
 }
 
 footer {
@@ -173,4 +174,67 @@ footer {
         font-size: 20px;
         text-align: left;
     }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes underline {
+    0% {
+        width: 0;
+        transform: translateX(0);
+    }
+
+    50% {
+        width: 100%;
+        transform: translateX(0);
+    }
+
+    100% {
+        width: 0;
+        transform: translateX(0);
+    }
+}
+
+.animated-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+    display: inline-block;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards, colorChange 3s ease-in-out infinite alternate;
+    position: relative;
+    white-space: nowrap;
+}
+
+@keyframes colorChange {
+    0% {
+        color: #181818;
+    }
+
+    50% {
+        color: #f0802a;
+    }
+
+    100% {
+        color: #252525;
+    }
+}
+
+.animated-text::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 1px;
+    background-color: #f0792a;
+    width: 0%;
+    animation: underline 2s ease-in-out infinite;
 }
